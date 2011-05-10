@@ -66,7 +66,7 @@ SHELL = /bin/sh
 DISTFILES = COPYING ChangeLog Makefile.in configure configure.in \
     REFERENCES bison.1 bison++.1 bison.rnh configure.bat \
     bison.cc bison.h bison.hairy \
-    lr0.c allocate.c closure.c conflict.c derives.c \
+    LR0.c allocate.c closure.c conflicts.c derives.c \
     files.c getargs.c gram.c lalr.c lex.c main.c nullable.c \
     output.c print.c reader.c reduce.c symtab.c version.c \
     warshall.c files.h gram.h lex.h machine.h new.h state.h \
@@ -88,7 +88,7 @@ PFILES = -DXPFILE=\"$(datadir)/$(PFILE)\" \
 	 -DXHFILE=\"$(datadir)/$(HFILE)\" \
 	 -DXPFILE1=\"$(datadir)/$(PFILE1)\"
 
-OBJECTS = lr0.o allocate.o closure.o conflict.o derives.o files.o	\
+OBJECTS = LR0.o allocate.o closure.o conflicts.o derives.o files.o	\
 	  getargs.o gram.o lalr.o lex.o					\
 	  main.o nullable.o output.o print.o reader.o reduce.o symtab.o	\
 	  warshall.o version.o						\
@@ -172,9 +172,9 @@ files.o: files.c
 	$(CC) -c $(PFILES) $(DEFS) $(CPPFLAGS) $(CFLAGS) \
 	   $(srcdir)/files.c $(OUTPUT_OPTION)
 
-lr0.o: system.h machine.h new.h gram.h state.h
+LR0.o: system.h machine.h new.h gram.h state.h
 closure.o: system.h machine.h new.h gram.h
-conflict.o: system.h machine.h new.h files.h gram.h state.h
+conflicts.o: system.h machine.h new.h files.h gram.h state.h
 derives.o: system.h new.h types.h gram.h
 files.o: system.h files.h new.h gram.h
 getargs.o: system.h files.h

@@ -74,7 +74,7 @@ $ 'CC' 'cc_options' WARSHALL.C
 $ 'CC' 'cc_options' VERSION.C
 $ if "''CC'" .eqs. "CC" then macro vmshlp.mar
 $ Link:
-$ link/exec=bison main,lr0,allocate,closure,conflicts,derives,files,-
+$ link/exec=bison main,LR0,allocate,closure,conflicts,derives,files,-
 vmsgetargs,gram,lalr,lex,nullable,output,print,reader,reduce,symtab,warshall,-
 version,'extra_linker_files'sys$library:vaxcrtl/lib
 $!

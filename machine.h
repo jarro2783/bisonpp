@@ -25,7 +25,7 @@ the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
 #define	MINSHORT	-32768
 #endif
 
-#if defined (_MSDOS) && !defined (__GO32__)
+#if defined (MSDOS) && !defined (__GO32__)
 #define	BITS_PER_WORD	16
 #define MAXTABLE	16383
 #else

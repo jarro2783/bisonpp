@@ -118,5 +118,3 @@ extern int pure_parser;
 /* error_token_number is the token number of the error token.  */
 
 extern int error_token_number;
-
-

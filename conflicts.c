@@ -29,26 +29,17 @@ the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  */
 #include "state.h"
 
 
-
 #ifdef __GNUC__
 #define alloca __builtin_alloca
-
-#elif defined (HAVE_ALLOCA_H) 
+#else
+#ifdef HAVE_ALLOCA_H
 #include <alloca.h>
-
-#elif defined( _AIX)
-
-#elif defined( _MSDOS)
-
-#ifndef alloca
-#include <malloc.h>
-#define alloca _alloca
-#endif /* ndef alloca */
-
-#else /* not msdos */
-char *alloca ();
-
-#endif /* msdos ? */
+#else
+#ifndef _AIX
+extern char *alloca ();
+#endif
+#endif
+#endif
 
 extern char **tags;
 extern int tokensetsize;
