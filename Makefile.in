@@ -94,7 +94,7 @@ OBJECTS = LR0.o allocate.o closure.o conflicts.o derives.o files.o	\
 	  warshall.o version.o						\
 	  getopt.o getopt1.o $(ALLOCA)
 
-all: bison++ bison.info
+all: bison++
 
 Makefile: Makefile.in config.status
 	./config.status
@@ -114,7 +114,7 @@ distclean: clean
 	rm -f Makefile config.status
 
 realclean: distclean
-	rm -f TAGS *.info*
+	rm -f TAGS
 
 # Most of these deps are in case using RCS.
 install: all bison++.1 $(srcdir)/$(PFILE) $(srcdir)/$(HFILE) installdirs uninstall
@@ -124,24 +124,21 @@ install: all bison++.1 $(srcdir)/$(PFILE) $(srcdir)/$(HFILE) installdirs uninsta
 	-chmod a+r $(datadir)/$(PFILE) $(datadir)/$(HFILE) 
 	-$(INSTALL_DATA) $(srcdir)/bison++.1 $(mandir)/bison++.$(manext)
 	-chmod a+r $(mandir)/bison++.$(manext)
-	# cd $(srcdir); for f in bison.info*; \
-	# do $(INSTALL_DATA) $$f $(infodir)/$$f; done
 
 # Make sure all installation directories, e.g. $(bindir) actually exist by
 # making them if necessary.
 installdirs:
-	-sh $(srcdir)/mkinstalldirs $(bindir) $(datadir) $(libdir) $(infodir) $(mandir)
+	-sh $(srcdir)/mkinstalldirs $(bindir) $(datadir) $(libdir) $(mandir)
 
 uninstall:
 	rm -f $(bindir)/bison++
 	-cd $(datadir); rm -f $(PFILE) $(HFILE)
-	# rm -f $(mandir)/bison.$(manext) $(infodir)/bison.info*
 	rm -f $(mandir)/bison++.$(manext)
 
 bison++: $(OBJECTS)
 	$(CC) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBS)
 
-dist: bison.info
+dist:
 	echo bison-`sed -e '/version_string/!d' -e 's/[^0-9.]*\([0-9.]*\).*/\1/' -e q version.c` > .fname
 	-rm -rf `cat .fname`
 	mkdir `cat .fname`
@@ -150,9 +147,6 @@ dist: bison.info
 	done
 	tar --gzip -chf `cat .fname`.tar.gz `cat .fname`
 	-rm -rf `cat .fname` .fname
-
-bison.info: bison.texinfo
-	$(MAKEINFO) $(srcdir)/bison.texinfo
 
 TAGS: *.c *.h
 	etags *.c *.h

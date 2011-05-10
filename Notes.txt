@@ -1,2 +1,0 @@
-===========================================
-this files contain discussion about bison++
