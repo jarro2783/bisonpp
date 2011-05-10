@@ -187,7 +187,7 @@ $ /* enum token */
 #endif
 public:
  int YY_@_PARSE(YY_@_PARSE_PARAM);
- virtual void YY_@_ERROR(char *msg) YY_@_ERROR_BODY;
+ virtual void YY_@_ERROR(const char *msg) YY_@_ERROR_BODY;
 #ifdef YY_@_PURE
 #ifdef YY_@_LSP_NEEDED
  virtual int  YY_@_LEX(YY_@_STYPE *YY_@_LVAL,YY_@_LTYPE *YY_@_LLOC) YY_@_LEX_BODY;
